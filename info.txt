@@ -3,6 +3,9 @@ Duración: 9 hs.
 Días: Viernes 10:00 a 13:00 hs
 Profe: Carlos Ríos  carlos.rios@educacionit.com
 
+Temas Administrativos: alumnos@educacionit.com
+Soporte:	soporteonline@educacionit.com
+
 Materiales: alumni.educacionit.com
 			user: email
 			pass: dni
