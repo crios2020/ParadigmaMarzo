@@ -1,4 +1,5 @@
 import java.util.Date;
+import javax.swing.JOptionPane;
 public class Paradigma{
 	public static void main(String[] args){
 		//punto de entrada
@@ -14,7 +15,7 @@ public class Paradigma{
 		auto1.acelerar();			// 30
 		auto1.frenar();				// 20
 		
-		System.out.println(auto1.marca+", "+auto1.modelo+", "+auto1.color+", "+auto1.velocidad);
+		System.out.println(auto1.marca+", "+auto1.modelo+", "+auto1.color+", "+auto1.getVelocidad());
 	
 		System.out.println("-- auto2 --");
 		Auto auto2=new Auto();
@@ -24,12 +25,20 @@ public class Paradigma{
 		for(int a=0;a<=60;a++){
 			auto2.acelerar();
 		}
-		System.out.println(auto2.marca+", "+auto2.modelo+", "+auto2.color+", "+auto2.velocidad);
+		System.out.println(auto2.marca+", "+auto2.modelo+", "+auto2.color+", "+auto2.getVelocidad());
 	
 		System.out.println("-- auto3 --");
 		Auto auto3=new Auto();
-		System.out.println(auto3.marca+", "+auto3.modelo+", "+auto3.color+", "+auto3.velocidad);
+		auto3.acelerar();		//10
+		//auto3.acelerar(16);		//26
+		//auto3.acelerar(12);		//38
+		auto3.acelerar(20,true);//78
+		//auto3.velocidad=369;
+		System.out.println(auto3.marca+", "+auto3.modelo+", "+auto3.color+", "+auto3.getVelocidad());
+		
+		auto3.imprimirVelocidad();
 		System.out.println(auto3.getVelocidad());
+		//JOptionPane.showMessageDialog(null,"velocidad: "+auto3.getVelocidad());
 	
 		//Las variables deben ser inicializadas
 		//int nro;
@@ -64,21 +73,56 @@ public class Paradigma{
 class Auto{
 	
 	//Atributos
-	String marca;
-	String modelo;
-	String color;
-	int velocidad;
+	public String marca;
+	public String modelo;
+	public String color;
+	private int velocidad;
 	
 	//Métodos
-	void acelerar(){
-		velocidad=velocidad+10;
+	public void acelerar(){										//acelerar
+		//velocidad=velocidad+10;
+		//if(velocidad>100){
+		//	velocidad=100;
+		//}
+		acelerar(10);
+	}
+	
+	//Método sobrecargado
+	private void acelerar(int kilometros){							//acelerarInt
+		velocidad = velocidad + kilometros;
 		if(velocidad>100){
 			velocidad=100;
 		}
 	}
 	
+	public void acelerar(int kilometros, boolean nitro){			//acelerarIntBoolean
+		if(nitro==true){
+			acelerar(kilometros*2);		//Llamado a método de la misma clase
+		}else{
+			acelerar(kilometros);
+		}
+	}
+	
+	void acelerar(boolean x, int x2){						//acelerarBooleanInt
+	}
+	
+	//void acelerar(int x){									//acelerarInt
+	//}
+	
+	//int acelerar(int x){}									//acelerarInt
+	
+	void acelerar(int x,int y){								//acelerarIntInt
+	}
+	
+	void acelerar(String kilometros){						//acelerarString
+	}
+	
 	void frenar(){
 		velocidad=velocidad-10;
+	}
+	
+	void imprimirVelocidad(){
+		System.out.println(velocidad);
 	}
 	
 	int getVelocidad(){
